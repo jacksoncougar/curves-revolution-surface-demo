@@ -57,10 +57,10 @@ struct Scene {
 
 	std::vector<Viewport> viewport{ Viewport{0,0,320, 480}, Viewport{320,0,320,480} };
 
-	std::unique_ptr<Program> program = nullptr;
-	std::unique_ptr<Program> program2 = nullptr;
+	std::unique_ptr<Program> program;
+	std::unique_ptr<Program> program2;
 
-	std::unique_ptr<control_curve> control_curve = nullptr;
+	std::unique_ptr<control_curve> control_curve;
 	
 	std::unique_ptr<mesh> revolution_mesh;
 	
@@ -317,16 +317,6 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
 	}
 }
 
-
-void GLAPIENTRY
-MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message,
-                const void *userParam) {
-    fprintf(stderr,
-            "[OpenGL] GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
-            (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
-            type, severity, message);
-}
-
 GLFWwindow *initialize_glfw(int width, int height) {
 	if (!glfwInit()) {
         log_error("GLFW", "Failed to init glfw");
@@ -439,9 +429,6 @@ int main(int argc, char *argv[]) {
 	{
 		glUniform1i(glGetUniformLocation(scene.program->id(), "textured"), true);
 	}
-
-	glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-	glDebugMessageCallback(MessageCallback, nullptr);
 
 	glEnable(GL_DEPTH_TEST); 
 	glEnable(GL_MULTISAMPLE);
