@@ -53,7 +53,7 @@ struct winged_edge
 	std::unordered_set<vertex> vertices;
 	std::vector<face> faces;
 
-	const std::vector<const face*>& faces_of(const vertex& vertex)
+	const std::vector<const face*> faces_of(const vertex& vertex)
 	{
 		const auto result = vertices.find(vertex);
 		if (result != vertices.end())
