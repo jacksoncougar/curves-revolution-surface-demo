@@ -60,7 +60,7 @@ struct Scene {
 	std::unique_ptr<Program> program;
 	std::unique_ptr<Program> program2;
 
-	std::unique_ptr<control_curve> control_curve;
+	std::unique_ptr<control_curve> ccurve;
 	
 	std::unique_ptr<mesh> revolution_mesh;
 	
@@ -96,9 +96,9 @@ void save_model(const Scene & scene)
 {
 	// save control curve
 	std::ofstream file("model.data", std::ios::binary);
-	auto size = scene.control_curve->points.size();
+	auto size = scene.ccurve->points.size();
 	file.write((char*)& size, sizeof(size_t));
-	file.write((char*)scene.control_curve->points.data(), sizeof(vec3) * scene.control_curve->points.size());
+	file.write((char*)scene.ccurve->points.data(), sizeof(vec3) * scene.ccurve->points.size());
 
 }
 
@@ -113,7 +113,7 @@ void load_model(Scene& scene)
 		points.resize(count);
 		file.read((char*)points.data() , sizeof(vec3) * count);
 
-		scene.control_curve.reset(new control_curve(points, std::bind(&Scene::update_mesh, &scene, std::placeholders::_1)));
+		scene.ccurve.reset(new control_curve(points, std::bind(&Scene::update_mesh, &scene, std::placeholders::_1)));
 	}
 }
 
@@ -137,7 +137,7 @@ void draw(GLFWwindow* window, Scene* scene)
 		glUniformMatrix4fv(glGetUniformLocation(scene->program2->id(), "world"), 1, false, world.data());
 		
 		scene->viewport[0].bind();
-		draw_control_curve(window, *scene->control_curve);
+		draw_control_curve(window, *scene->ccurve);
 	}
 	{
 		scene->program->bind();
@@ -228,15 +228,15 @@ void cursor_position_callback(GLFWwindow* window, double x, double y) {
 	auto ddy = f.y - s.y;
 	
 	if(scene->viewport[0].contains(x,y))
-	for(size_t i = 0; i < scene->control_curve->points.size(); ++i)
+	for(size_t i = 0; i < scene->ccurve->points.size(); ++i)
 	{
-		if (scene->control_curve->is_selected[i])
+		if (scene->ccurve->is_selected[i])
 		{
-			scene->control_curve->points[i].x += ddx;
-			scene->control_curve->points[i].y += ddy;
-			scene->control_curve->handles[i].surface.origin.x += ddx;
-			scene->control_curve->handles[i].surface.origin.y += ddy;
-			scene->control_curve->update_batch();
+			scene->ccurve->points[i].x += ddx;
+			scene->ccurve->points[i].y += ddy;
+			scene->ccurve->handles[i].surface.origin.x += ddx;
+			scene->ccurve->handles[i].surface.origin.y += ddy;
+			scene->ccurve->update_batch();
 		}
 	}
 
@@ -262,11 +262,11 @@ void mouse_button_callback(GLFWwindow *window, int button, int action, int mods)
 		{			
 			const auto r = project(x, scene->viewport[0].height - y, scene->viewport[0].width, scene->viewport[0].height);
 
-			for (auto&& traceable : scene->control_curve->handles)
+			for (auto&& traceable : scene->ccurve->handles)
 			{
 				if (traceable.test(r))
 				{
-					scene->control_curve->select(traceable);
+					scene->ccurve->select(traceable);
 					break;
 				}
 			}
@@ -286,7 +286,7 @@ void mouse_button_callback(GLFWwindow *window, int button, int action, int mods)
 
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
 	{
-		scene->control_curve->clear_selections();
+		scene->ccurve->clear_selections();
 		scene->camera.enabled = false;
 	}
 }
@@ -295,15 +295,15 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action, int mod
 	auto scene = get_window_scene(window);
 	if(key == GLFW_KEY_S && action == GLFW_PRESS)
 	{
-		scene->control_curve->split_selected();
+		scene->ccurve->split_selected();
 	}
 	if (key == GLFW_KEY_D && action == GLFW_PRESS)
 	{
-		scene->control_curve->delete_selected();
+		scene->ccurve->delete_selected();
 	}
 	if (key == GLFW_KEY_E && action == GLFW_PRESS)
 	{
-		scene->control_curve->duplicate_selected();
+		scene->ccurve->duplicate_selected();
 	}
 
 	if (key == GLFW_KEY_S && action == GLFW_PRESS && mods & GLFW_MOD_CONTROL)
@@ -376,7 +376,7 @@ int main(int argc, char *argv[]) {
 
 	glfwSetWindowUserPointer(window, &scene);
 
-	scene.control_curve.reset( new control_curve(std::vector<vec3>{
+	scene.ccurve.reset( new control_curve(std::vector<vec3>{
 		{ 0.1, 0.5, 0 },
 		{ 0.5,0,0 },
 		{ 0.1,-0.5,0 },
