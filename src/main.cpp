@@ -509,7 +509,7 @@ int main(int argc, char *argv[])
 
   glPointSize(10);
 
-  glfwSetWindowSize(window, 640, 480);
+  glfwSetWindowSize(window, 320, 240);
 
   while (!glfwWindowShouldClose(window))
   {
