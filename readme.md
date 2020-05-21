@@ -8,6 +8,11 @@ You can also create, subdivide, and delete them using `E`, `S`, and `D` keys res
 
 ![example](./docs/images/example.png)
 
+## Demo (Click to play)
+
+original link: https://www.youtube.com/watch?v=UuGpkGAGBJE
+[![demo video](https://img.youtube.com/vi/UuGpkGAGBJE/0.jpg)](https://www.youtube.com/watch?v=UuGpkGAGBJE)
+
 ## Building
 
     mkdir build

@@ -32,7 +32,7 @@ struct light {
 };
 
 uniform material_constants material = { 0.5, 0.2, 0.3, 256 };
-uniform light light0 = { mat4x4(1), vec3(5, 10, 0.5), vec3(.7, .7, .7), vec3(.8, .8, .8), true };
+uniform light light0 = { mat4x4(1), vec3(15, 5, -4.5), vec3(.7, .7, .7), vec3(.8, .8, .8), true };
 
 
 uniform int p[512] = { 151,160,137,91,90,15,
