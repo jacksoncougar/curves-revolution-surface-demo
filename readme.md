@@ -5,7 +5,7 @@ Simple demo project shows off how to create and texture a mesh create by revolvi
 Move the control points by clicking on a vertex and dragging the mouse. 
 You can also create, subdivide, and delete them using `E`, `S`, and `D` keys respectively.
 
-![example]("docs\\images\\Annotation 2020-05-20 203132.png")
+![example]("./docs/images/example.png")
 
 ## Building
 
