@@ -1,11 +1,12 @@
-# Computer Graphics (CPSC 453) Project
-Jackson Cougar Wiebe
+# Computer Graphics (CPSC 453) Project: Revolution Surfaces from Curves
+Jackson Cougar Wiebe &bull; Fall 2019 &bull; University of Calgary
+
 
 Simple demo project shows off how to create and texture a mesh create by revolving a curve about the y-axis. 
 Move the control points by clicking on a vertex and dragging the mouse. 
 You can also create, subdivide, and delete them using `E`, `S`, and `D` keys respectively.
 
-![example]("./docs/images/example.png")
+![example](./docs/images/example.png)
 
 ## Building
 
@@ -18,6 +19,7 @@ You can also create, subdivide, and delete them using `E`, `S`, and `D` keys res
     arg0 is normal texture filename
     arg1 is ambient occlusion texture filename
     arg2 is roughness texture filename
+    arg3 is albedo texture filename
 
 ## Controls
 
