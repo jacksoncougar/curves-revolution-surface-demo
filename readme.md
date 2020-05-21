@@ -1,5 +1,11 @@
-# CPSC 453 Assignment 5: Modelling
+# Computer Graphics (CPSC 453) Project
 Jackson Cougar Wiebe
+
+Simple demo project shows off how to create and texture a mesh create by revolving a curve about the y-axis. 
+Move the control points by clicking on a vertex and dragging the mouse. 
+You can also create, subdivide, and delete them using `E`, `S`, and `D` keys respectively.
+
+![example]("docs\\images\\Annotation 2020-05-20 203132.png")
 
 ## Building
 
