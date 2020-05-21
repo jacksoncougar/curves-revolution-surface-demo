@@ -9,20 +9,20 @@ Jackson Cougar Wiebe
 
 ## Params
 
-- arg0 is normal texture filename
-- arg1 is ambient occlusion texture filename
-- arg2 is roughness texture filename
+    arg0 is normal texture filename
+    arg1 is ambient occlusion texture filename
+    arg2 is roughness texture filename
 
 ## Controls
 
-- `[Ctrl-S]`	saves the current model to "model.data".
-- `[Ctrl-L]`	loads the current model from "model.data".
-- `[D]`			deletes the selected control point.
-- `[E]`			copies the selected control point.
-- `[S]`			adds a control point between the selected control point and its neighbor.
+    [Ctrl-S]	saves the current model to "model.data".
+    [Ctrl-L]	loads the current model from "model.data".
+    [D]			deletes the selected control point.
+    [E]			copies the selected control point.
+    [S]			adds a control point between the selected control point and its neighbor.
 
-- `[Left MouseButton]`		selects the control point under the mouse.
-- `[Left MouseButton+Drag]` moves the camera around the mesh viewport.
+    [Left MouseButton]		selects the control point under the mouse.
+    [Left MouseButton+Drag] moves the camera around the mesh viewport.
 
 ## Bonus Features implemented
 
