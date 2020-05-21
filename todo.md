@@ -21,4 +21,4 @@
 # Other requirements
 -[ ] Compiles on lab machines.
 -[/] Code is clear and well documented.
--[ ] Code reuse if clearly outline in readme.md
+-[ ] Code reuse if clearly outlined in readme.md
