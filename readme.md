@@ -15,8 +15,8 @@ Jackson Cougar Wiebe
 
 ## Controls
 
-    [Ctrl-S]	    saves the current model to "model.data".
-    [Ctrl-L]	    loads the current model from "model.data".
+    [Ctrl-S]	        saves the current model to "model.data".
+    [Ctrl-L]	        loads the current model from "model.data".
     [D]			deletes the selected control point.
     [E]			copies the selected control point.
     [S]			adds a control point between the selected control point and its neighbor.
