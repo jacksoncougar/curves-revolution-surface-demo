@@ -2,7 +2,7 @@
 Jackson Cougar Wiebe &bull; Fall 2019 &bull; University of Calgary
 
 
-Simple demo project shows off how to create and texture a mesh create by revolving a curve about the y-axis. 
+Simple demo project shows off how to create and texture a mesh by revolving a curve about the y-axis. 
 Move the control points by clicking on a vertex and dragging the mouse. 
 You can also create, subdivide, and delete them using `E`, `S`, and `D` keys respectively.
 
